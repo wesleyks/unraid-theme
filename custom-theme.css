@@ -10,6 +10,7 @@
  *    of CSS specificity or load order
  * 4. Without !important, many theme styles would be ignored or overridden by
  *    Unraid's default styling
+ * 5. This override is specifically for the login page `login.html`
  * 
  * While !important is generally discouraged in regular development, it's the most
  * reliable approach for comprehensive theme overrides of third-party applications.
@@ -60,14 +61,64 @@
     center center/cover no-repeat fixed;
 }
 
+/* CRT Scanline Effect */
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4px;
+  }
+}
+
 /* Login Page Overrides */
 body {
   background: var(--main-bg-color) !important;
+  position: relative;
+}
+
+/* CRT Scanlines Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 2px,
+    rgba(0, 0, 0, 0.3) 4px
+  );
+  animation: scanlines 0.1s linear infinite;
+}
+
+/* Add slight screen curvature effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 70%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
 }
 
 #login {
   background: rgba(0, 0, 0, 0.25) !important;
   border: 1px solid rgba(var(--accent-color), 0.3);
+  position: relative;
+  z-index: 1001; /* Ensure login form appears above scanlines */
 }
 
 #login .content {
