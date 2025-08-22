@@ -26,6 +26,8 @@
   --text-hover: #fff;
   --text-muted: #8dcfc9;
 
+  --input-focus-bg: rgb(38, 38, 38);
+
   /*Specials*/
   --arr-queue-color: #009688; /* Servarr apps + Bazarr*/
   --plex-poster-unwatched: rgb(21, 213, 194);
@@ -46,7 +48,7 @@ body {
 }
 
 #login {
-  background: var(--modal-bg-color) !important;
+  background: rgba(0, 0, 0, 0.25) !important;
   border: 1px solid rgba(var(--accent-color), 0.3);
 }
 
@@ -67,6 +69,17 @@ body {
 }
 
 /* Override input field styling */
+[type="email"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="url"],
+textarea {
+  background: transparent !important;
+}
+
 [type="email"]:active,
 [type="email"]:focus,
 [type="number"]:active,
@@ -84,6 +97,7 @@ body {
 textarea:active,
 textarea:focus {
   border-color: var(--link-color) !important;
+  background: var(--input-focus-bg) !important;
 }
 
 /* Override link colors */
