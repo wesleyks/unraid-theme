@@ -26,7 +26,8 @@
   --text-hover: #fff;
   --text-muted: #8dcfc9;
 
-  --input-focus-bg: rgb(38, 38, 38);
+  --input-border-color: #d3d3d3;
+  --focus-input-bg-color: rgb(26, 26, 26);
 
   /*Specials*/
   --arr-queue-color: #009688; /* Servarr apps + Bazarr*/
@@ -78,6 +79,8 @@ body {
 [type="url"],
 textarea {
   background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--input-border-color) !important;
 }
 
 [type="email"]:active,
@@ -96,8 +99,10 @@ textarea {
 [type="url"]:focus,
 textarea:active,
 textarea:focus {
-  border-color: var(--link-color) !important;
-  background: var(--input-focus-bg) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--input-border-color) !important;
+  background: var(--focus-input-bg-color) !important;
+  caret-color: var(--text) !important;
 }
 
 /* Override link colors */

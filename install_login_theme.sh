@@ -1,5 +1,27 @@
 #!/bin/bash
-DISABLE_THEME="true"
+#description=Installs the custom login theme
+#name=Install Login Theme
+#argumentDescription=[--disable <boolean>]
+#argumentDefault=--disable false
+
+# Default value
+DISABLE_THEME="false"
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --disable)
+      DISABLE_THEME="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    *)
+      echo "Unknown option $1"
+      echo "Usage: $0 [--disable true|false]"
+      exit 1
+      ;;
+  esac
+done
 
 ## FAQ
 
@@ -32,8 +54,9 @@ if [ ! -f ${LOGIN_PAGE}.backup ]; then
 fi
 
 # Adding stylesheets
-if ! grep -q "custom-theme.css" ${LOGIN_PAGE}; then
+if ! grep -q "custom-theme.min.css" ${LOGIN_PAGE}; then
   echo "Adding custom stylesheet"
-  sed -i -e "\@<style>@i\    <link data-tp='custom' rel='stylesheet' href='https://cdn.jsdelivr.net/gh/wesleyks/unraid-theme@main/custom-theme.min.css?v=$(date +%s)'>" ${LOGIN_PAGE}
+  CACHE_BUST=$(date +%s)
+  sed -i -e "\@<style>@i\    <link data-tp='custom' rel='stylesheet' href='https://cdn.jsdelivr.net/gh/wesleyks/unraid-theme@main/custom-theme.min.css?v=${CACHE_BUST}'>" ${LOGIN_PAGE}
   echo 'Custom stylesheet added'
 fi
