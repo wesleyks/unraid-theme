@@ -1,27 +1,22 @@
 #!/bin/bash
 #description=Installs the custom login theme
 #name=Install Login Theme
-#argumentDescription=[--disable <boolean>]
-#argumentDefault=--disable false
+#argumentDescription=[true|false] - Pass 'true' to disable theme, 'false' or empty to enable
+#argumentDefault=false
 
 # Default value
 DISABLE_THEME="false"
 
-# Parse command line arguments
-while [[ $# -gt 0 ]]; do
-  case $1 in
-    --disable)
-      DISABLE_THEME="$2"
-      shift # past argument
-      shift # past value
-      ;;
-    *)
-      echo "Unknown option $1"
-      echo "Usage: $0 [--disable true|false]"
-      exit 1
-      ;;
-  esac
-done
+# Simple argument parsing - check if argument contains "true"
+if [[ "$1" == *"true"* ]]; then
+  DISABLE_THEME="true"
+elif [[ "$1" == *"false"* ]]; then
+  DISABLE_THEME="false"
+elif [[ -n "$1" ]]; then
+  echo "Usage: $0 [--disable true|false]"
+  echo "Note: Pass 'true' to disable theme, 'false' or no argument to enable theme"
+  exit 1
+fi
 
 ## FAQ
 
