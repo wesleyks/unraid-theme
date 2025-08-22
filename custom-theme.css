@@ -1,0 +1,112 @@
+:root {
+  --main-bg-color: radial-gradient(ellipse at center, #47918a 0%, #0b3161 100%)
+    center center/cover no-repeat fixed;
+
+  --modal-bg-color: linear-gradient(-90deg, #47918a 0%, #0b3161 100%) center
+    center/cover no-repeat fixed;
+  --modal-header-color: linear-gradient(-90deg, #47918a 0%, #0b3161 100%) center
+    center/cover no-repeat fixed;
+  --modal-footer-color: linear-gradient(-90deg, #47918a 0%, #0b3161 100%) center
+    center/cover no-repeat fixed;
+
+  --drop-down-menu-bg: #265c74;
+
+  --button-color: #009688;
+  --button-color-hover: #12afa0;
+  --button-text: #eee;
+  --button-text-hover: #fff;
+
+  --accent-color: 18, 175, 160;
+  --accent-color-hover: rgb(var(--accent-color), 0.8);
+  --link-color: #0ed2bf;
+  --link-color-hover: #36e7d6;
+  --label-text-color: #fff;
+
+  --text: #ddd;
+  --text-hover: #fff;
+  --text-muted: #8dcfc9;
+
+  /*Specials*/
+  --arr-queue-color: #009688; /* Servarr apps + Bazarr*/
+  --plex-poster-unwatched: rgb(21, 213, 194);
+  --petio-spinner: invert(39%) sepia(98%) saturate(527%) hue-rotate(129deg)
+    brightness(94%) contrast(101%); /* Made with https://codepen.io/jsm91/embed/ZEEawyZ */
+  --gitea-color-primary-dark-4: 18, 175, 160;
+  --overseerr-gradient: radial-gradient(
+      ellipse at center,
+      rgb(71, 145, 138, 0.9) 0%,
+      rgb(11, 49, 97, 0.9) 100%
+    )
+    center center/cover no-repeat fixed;
+}
+
+/* Login Page Overrides */
+body {
+  background: var(--main-bg-color) !important;
+}
+
+#login {
+  background: var(--modal-bg-color) !important;
+  border: 1px solid rgba(var(--accent-color), 0.3);
+}
+
+#login .content {
+  background: transparent;
+}
+
+/* Override button styling */
+.button {
+  color: var(--button-text) !important;
+  background: var(--button-color) !important;
+  background-size: auto !important;
+}
+
+.button:hover {
+  color: var(--button-text-hover) !important;
+  background: var(--button-color-hover) !important;
+}
+
+/* Override input field styling */
+[type="email"]:active,
+[type="email"]:focus,
+[type="number"]:active,
+[type="number"]:focus,
+[type="password"]:active,
+[type="password"]:focus,
+[type="search"]:active,
+[type="search"]:focus,
+[type="tel"]:active,
+[type="tel"]:focus,
+[type="text"]:active,
+[type="text"]:focus,
+[type="url"]:active,
+[type="url"]:focus,
+textarea:active,
+textarea:focus {
+  border-color: var(--link-color) !important;
+}
+
+/* Override link colors */
+a {
+  color: var(--link-color) !important;
+}
+
+a:hover {
+  color: var(--link-color-hover) !important;
+}
+
+/* Override header text colors */
+h1,
+h2 {
+  color: var(--label-text-color) !important;
+}
+
+/* Override logo area gradient */
+.angle:after {
+  background: var(--modal-header-color) !important;
+}
+
+/* Override text colors */
+#login .content {
+  color: var(--text) !important;
+}
