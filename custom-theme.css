@@ -1,3 +1,20 @@
+/*
+ * Unraid Custom Theme
+ * 
+ * NOTE: This file uses !important extensively throughout all style declarations.
+ * This is intentional and necessary because:
+ * 
+ * 1. This is a theme override for Unraid's built-in CSS which we cannot modify
+ * 2. Unraid's original styles have high specificity and load before this theme
+ * 3. Using !important ensures our custom theme styles take precedence regardless
+ *    of CSS specificity or load order
+ * 4. Without !important, many theme styles would be ignored or overridden by
+ *    Unraid's default styling
+ * 
+ * While !important is generally discouraged in regular development, it's the most
+ * reliable approach for comprehensive theme overrides of third-party applications.
+ */
+
 :root {
   --main-bg-color: radial-gradient(ellipse at center, #47918a 0%, #0b3161 100%)
     center center/cover no-repeat fixed;
@@ -81,6 +98,7 @@ textarea {
   background: transparent !important;
   border: none !important;
   border-bottom: 1px solid var(--input-border-color) !important;
+  color: var(--text) !important;
 }
 
 [type="email"]:active,
