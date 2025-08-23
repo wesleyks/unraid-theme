@@ -51,7 +51,6 @@ fi
 # Adding stylesheets
 if ! grep -q "custom-theme.min.css" ${LOGIN_PAGE}; then
   echo "Adding custom stylesheet"
-  CACHE_BUST=$(date +%s)
-  sed -i -e "\@<style>@i\    <link data-tp='custom' rel='stylesheet' href='https://cdn.jsdelivr.net/gh/wesleyks/unraid-theme@main/custom-theme.min.css?v=${CACHE_BUST}'>" ${LOGIN_PAGE}
+  sed -i -e "\@<style>@i\    <link data-tp='custom' rel='stylesheet' href='https://cdn.jsdelivr.net/gh/wesleyks/unraid-theme@main/custom-theme.min.css'>" ${LOGIN_PAGE}
   echo 'Custom stylesheet added'
 fi
